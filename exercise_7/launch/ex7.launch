@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+	<arg name="model" />
+	<param name="robot_description" textfile="$(find exercise_7)/urdf/kuka_generated.urdf" />
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+      		<remap from="joint_states" to="/sim_ros_interface/joint_states" />
+        </node> 
+
+	<node pkg="exercise_7" name="ex7_control" type="ex7_control" output="screen">
+
+		<param name="left_lim" value="1.2" />
+		<param name="right_lim" value="-1.2" />
+
+	</node>
+
+</launch>
+
